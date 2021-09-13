@@ -1,0 +1,19 @@
+.form_box {
+  display: flex;
+  flex-direction: column;
+}
+
+.form_box__expiry_code {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.form_box__expiry_code input {
+  width: 30%;
+}
+
+.form_box__expiry_code p {
+  width: 50%;
+  margin: 0px;
+}
