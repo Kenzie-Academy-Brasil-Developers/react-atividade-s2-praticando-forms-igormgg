@@ -95,3 +95,8 @@
   font-family: inherit;
   font-size: 16px;
 }
+
+.card_box button:hover {
+  cursor: pointer;
+  filter: brightness(0.8);
+}

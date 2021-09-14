@@ -20,6 +20,13 @@ const Form = ({ setShowCard, setUserInfo, setShowForm }) => {
         "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})",
         "A senha deve conter pelo menos 8 caracteres, sendo um minúsculo, um maiúsculo, um número, e um caracter especial (!@#$%^&*)"
       ),
+    passConfirm: yup
+      .string()
+      .required("*Digite a senha novamente")
+      .oneOf(
+        [yup.ref("password"), null],
+        "A senha deve ser a mesma da anterior"
+      ),
     cpf: yup
       .string()
       .required("*Digite o CPF")
@@ -73,6 +80,15 @@ const Form = ({ setShowCard, setUserInfo, setShowForm }) => {
             type="password"
           />
           <p>{errors.password?.message}</p>
+        </div>
+        <div>
+          <h5>Confirme sua senha</h5>
+          <input
+            placeholder="Digite a senha novamente"
+            {...register("passConfirm")}
+            type="password"
+          />
+          <p>{errors.passConfirm?.message}</p>
         </div>
         <div>
           <h5>CPF</h5>
