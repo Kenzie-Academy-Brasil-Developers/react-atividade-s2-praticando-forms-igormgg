@@ -3,7 +3,7 @@ import "./styles.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-const Form = ({ setShowCard, setUserInfo }) => {
+const Form = ({ setShowCard, setUserInfo, setShowForm }) => {
   const formSchema = yup.object().shape({
     email: yup
       .string()
@@ -49,6 +49,8 @@ const Form = ({ setShowCard, setUserInfo }) => {
 
   const onSubmit = (data) => {
     setUserInfo(data);
+    setShowCard(true);
+    setShowForm(false);
   };
 
   return (
@@ -114,7 +116,7 @@ const Form = ({ setShowCard, setUserInfo }) => {
           <p id="validThrough_error">{errors.validThrough?.message}</p>
           <p id="cvv_error">{errors.cvv?.message}</p>
         </div>
-        <button onClick={() => setShowCard(true)}>Clonar</button>
+        <button>Clonar</button>
       </form>
     </div>
   );

@@ -1,8 +1,13 @@
 import "./styles.css";
 
-const Card = ({ userInfo }) => {
+const Card = ({ userInfo, setShowForm, setShowCard }) => {
+  const clickHandler = () => {
+    setShowForm(true);
+    setShowCard(false);
+  };
+
   return (
-    <div>
+    <div className="card_box">
       <div className="infoCard">
         <h5 id="infoCard_bank">BANK</h5>
         <h5 id="infoCard_cardNumber">{userInfo.cardNumber}</h5>
@@ -22,7 +27,7 @@ const Card = ({ userInfo }) => {
           </div>
         </div>
       </div>
-      <button>Clonar outro cartão</button>
+      <button onClick={() => clickHandler()}>Clonar outro cartão</button>
     </div>
   );
 };

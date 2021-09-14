@@ -5,6 +5,7 @@ import Form from "./Components/Form";
 
 function App() {
   const [showCard, setShowCard] = useState(false);
+  const [showForm, setShowForm] = useState(true);
   const [userInfo, setUserInfo] = useState({});
 
   return (
@@ -14,8 +15,20 @@ function App() {
         <h3>"É verdade esse bilete"</h3>
       </header>
       <body>
-        <Form setShowCard={setShowCard} setUserInfo={setUserInfo} />
-        {showCard && <Card userInfo={userInfo} />}
+        {showForm && (
+          <Form
+            setShowCard={setShowCard}
+            setUserInfo={setUserInfo}
+            setShowForm={setShowForm}
+          />
+        )}
+        {showCard && (
+          <Card
+            userInfo={userInfo}
+            setShowForm={setShowForm}
+            setShowCard={setShowCard}
+          />
+        )}
       </body>
     </div>
   );
