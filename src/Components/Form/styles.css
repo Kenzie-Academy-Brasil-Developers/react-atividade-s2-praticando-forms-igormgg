@@ -13,6 +13,11 @@
   width: 30%;
 }
 
+.form_box__expiry_code h5 {
+  width: 50%;
+  margin: 0px;
+}
+
 .form_box__expiry_code p {
   width: 50%;
   margin: 0px;
