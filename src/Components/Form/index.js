@@ -2,13 +2,8 @@ import { useForm } from "react-hook-form";
 import "./styles.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useState } from "react";
-import Card from "../Card";
 
-const Form = () => {
-  const [showCard, setShowCard] = useState(false);
-  const [userInfo, setUserInfo] = useState({});
-
+const Form = ({ setShowCard, setUserInfo }) => {
   const formSchema = yup.object().shape({
     email: yup
       .string()
@@ -52,30 +47,26 @@ const Form = () => {
     resolver: yupResolver(formSchema),
   });
 
-  // const onSubmit = (data) => {
-  //   return console.log(data);
-  // };
-
   const onSubmit = (data) => {
     setUserInfo(data);
   };
 
-  console.log(userInfo);
-
   return (
     <div>
-      <h1>Este site não é uma fraude</h1>
-      <h3>(É verdade esse bilete)</h3>
       <form className="form_box" onSubmit={handleSubmit(onSubmit)}>
         <div>
           <h5>Email</h5>
-          <input placeholder="Email" {...register("email")} type="email" />
+          <input
+            placeholder="exemplo@exemplo.com"
+            {...register("email")}
+            type="email"
+          />
           <p>{errors.email?.message}</p>
         </div>
         <div>
           <h5>Senha</h5>
           <input
-            placeholder="Senha"
+            placeholder="Digite a senha"
             {...register("password")}
             type="password"
           />
@@ -118,13 +109,13 @@ const Form = () => {
             {...register("cvv")}
             type="text"
             maxLength="3"
+            id="cvv"
           />
-          <p>{errors.validThrough?.message}</p>
-          <p>{errors.cvv?.message}</p>
+          <p id="validThrough_error">{errors.validThrough?.message}</p>
+          <p id="cvv_error">{errors.cvv?.message}</p>
         </div>
         <button onClick={() => setShowCard(true)}>Clonar</button>
       </form>
-      {showCard && <Card userInfo={userInfo} />}
     </div>
   );
 };
