@@ -76,13 +76,17 @@ const Form = ({ setShowCard, setUserInfo, setShowForm }) => {
         </div>
         <div>
           <h5>CPF</h5>
-          <input placeholder="CPF" {...register("cpf")} type="number" />
+          <input
+            placeholder="Somente números"
+            {...register("cpf")}
+            type="number"
+          />
           <p>{errors.cpf?.message}</p>
         </div>
         <div>
           <h5>Número do cartão de Crédito</h5>
           <input
-            placeholder="Número do Cartão de Crédito"
+            placeholder="5555555555555555"
             {...register("cardNumber")}
             type="text"
           />
