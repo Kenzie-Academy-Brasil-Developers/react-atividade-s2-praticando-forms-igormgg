@@ -3,9 +3,11 @@ import "./styles.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from "react";
+import Card from "../Card";
 
 const Form = () => {
   const [showCard, setShowCard] = useState(false);
+  const [userInfo, setUserInfo] = useState({});
 
   const formSchema = yup.object().shape({
     email: yup
@@ -50,15 +52,15 @@ const Form = () => {
     resolver: yupResolver(formSchema),
   });
 
+  // const onSubmit = (data) => {
+  //   return console.log(data);
+  // };
+
   const onSubmit = (data) => {
-    return console.log(data);
+    setUserInfo(data);
   };
 
-  // const onSubmit = (data) => {
-  //     return (
-  //         <div>{data.email)</div>
-  //     )
-  // };
+  console.log(userInfo);
 
   return (
     <div>
@@ -122,7 +124,7 @@ const Form = () => {
         </div>
         <button onClick={() => setShowCard(true)}>Clonar</button>
       </form>
-      {showCard && <div>ESTE É O MEU CARTÃO</div>}
+      {showCard && <Card userInfo={userInfo} />}
     </div>
   );
 };
